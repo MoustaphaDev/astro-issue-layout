@@ -1,0 +1,29 @@
+---
+export interface Props {
+  type: "note" | "highlight";
+  title: string;
+}
+const { type, title } = Astro.props;
+---
+
+<aside class={type}>
+  <p class="title">{title}</p>
+  <slot />
+</aside>
+
+<style>
+  aside {
+    border-inline-start: 4px solid #964233;
+    padding: 1rem;
+    /* outline: 1px solid transparent; */
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  aside.highlight {
+    background-color: #f9674d;
+  }
+  aside .title {
+    text-transform: uppercase;
+    text-decoration: underline;
+  }
+</style>

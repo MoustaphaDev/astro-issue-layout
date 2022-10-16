@@ -1,0 +1,36 @@
+---
+export interface Props {
+  current: string;
+}
+const { current } = Astro.props as Props;
+const menu = [
+  { url: "/", label: "Home" },
+  { url: "/posts", label: "Posts" },
+  { url: "http://tree.marzolo.com", label: "Tree" },
+  { url: "/credits", label: "Credits" },
+];
+---
+
+<nav
+  class="flex items-center justify-between px-3 py-3 mt-10 bg-black text-white"
+>
+  <h2>
+    <a href="/">website</a>
+  </h2>
+  <ul class="hidden md:flex md:items-stretch">
+    {
+      menu.map((d) => (
+        <li>
+          <a
+            class={`block mx-4 tracking-wider border-x-2 px-2 ${
+              "/" + current === d.url ? "bg-red-700" : ""
+            }`}
+            href={d.url}
+          >
+            {d.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

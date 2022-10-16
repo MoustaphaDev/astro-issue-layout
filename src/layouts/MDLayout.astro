@@ -1,0 +1,20 @@
+---
+import Layout from "./Layout.astro";
+// let's give a consistent style to all posts
+import styles from "../styles/post.css";
+const { frontmatter } = Astro.props;
+---
+
+<Layout page="posts">
+  <div class="h-full flex flex-col justify-between">
+    <div class="post">
+      <h6><strong>{frontmatter.title}</strong> by {frontmatter.author}</h6>
+      <slot />
+
+      <p class="mt-6">Written on: {frontmatter.date}</p>
+    </div>
+    <footer>
+      <a href="/posts">go back</a>
+    </footer>
+  </div>
+</Layout>

@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+
+const posts = await Astro.glob("../post/*.mdx");
+---
+
+<Layout page="posts">
+  <p>These are all the posts (card from astro :) :</p>
+  <div class="flex mt-4 gap-4">
+    {
+      posts.map((post) => (
+        <Card
+          title={post.frontmatter.title}
+          body={post.frontmatter.description}
+          href={post.url || post.frontmatter.url}
+        />
+      ))
+    }
+  </div>
+</Layout>
